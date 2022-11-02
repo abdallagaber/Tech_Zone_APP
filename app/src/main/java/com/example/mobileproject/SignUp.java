@@ -59,7 +59,7 @@ public class SignUp extends AppCompatActivity {
                     editTextFName.setError("First Name is required");
                     editTextFName.requestFocus();
                 } else if (TextUtils.isEmpty(lastName)){
-                    editTextLName.setError("First Name is required");
+                    editTextLName.setError("Last Name is required");
                     editTextLName.requestFocus();
                 } else if (TextUtils.isEmpty(email)){
                     editTextEmail.setError("Email is required");

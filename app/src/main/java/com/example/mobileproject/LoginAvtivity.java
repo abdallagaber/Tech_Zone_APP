@@ -3,6 +3,7 @@ package com.example.mobileproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -42,21 +43,16 @@ public class LoginAvtivity extends AppCompatActivity {
                 String textPassword = editTextLoginPassword.getText().toString();
 
                 if(TextUtils.isEmpty(textEmail)) {
-                    Toast.makeText(LoginAvtivity.this, "please enter your email", Toast.LENGTH_LONG).show();
                     editTextLoginEmail.setError("E-mail is required");
                     editTextLoginEmail.requestFocus();
                 }else if(!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
-                    Toast.makeText(LoginAvtivity.this, "please enter your email again", Toast.LENGTH_LONG).show();
                     editTextLoginEmail.setError("Enter a valid E-mail ");
                     editTextLoginEmail.requestFocus();
                 }else if(TextUtils.isEmpty(textPassword)){
-                    Toast.makeText(LoginAvtivity.this, "please enter your password", Toast.LENGTH_LONG).show();
                     editTextLoginPassword.setError("Password is required");
                     editTextLoginPassword.requestFocus();
                 }else{
                     loginUser(textEmail,textPassword);
-
-
                 }
             }
         });
@@ -69,6 +65,8 @@ public class LoginAvtivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(LoginAvtivity.this , "Logined successfuly" , Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginAvtivity.this, HomeActivity.class));
+                    finish();
                 }else{
                     try{
                         throw task.getException();
@@ -76,8 +74,8 @@ public class LoginAvtivity extends AppCompatActivity {
                         editTextLoginEmail.setError("User doesn't exist! please sign up");
                         editTextLoginEmail.requestFocus();
                     }catch(FirebaseAuthInvalidCredentialsException e){
-                        editTextLoginEmail.setError("Invalid credentials . kindly, try again");
-                        editTextLoginEmail.requestFocus();
+                        editTextLoginPassword.setError("Password is incorrect. kindly,try again");
+                        editTextLoginPassword.requestFocus();
                     }catch(Exception e){
                         Log.e(TAG,e.getMessage());
                         Toast.makeText(LoginAvtivity.this , e.getMessage() , Toast.LENGTH_LONG).show();
