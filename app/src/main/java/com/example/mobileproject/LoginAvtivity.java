@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,12 +39,26 @@ public class LoginAvtivity extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
 
-        Button buttonLogin = findViewById(R.id.buttonRegSignup);
+        FrameLayout buttonLogin = findViewById(R.id.SignUpBtn);
+        ProgressBar progressBar = findViewById(R.id.SignUpProgress);
+        TextView textView = findViewById(R.id.text);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textEmail = editTextLoginEmail.getText().toString();
                 String textPassword = editTextLoginPassword.getText().toString();
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        textView.setVisibility(View.VISIBLE);
+
+                    }
+                },3000);
+
 
                 if(TextUtils.isEmpty(textEmail)) {
                     editTextLoginEmail.setError("E-mail is required");

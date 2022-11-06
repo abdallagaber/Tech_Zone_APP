@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,8 +47,10 @@ public class SignUp extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextRegEmail);
         editTextPass = findViewById(R.id.editTextRegPass);
         editTextConfirmPass = findViewById(R.id.editTextRegConfirmPass);
-        Button buttonRegiser = findViewById(R.id.buttonRegSignup);
-        buttonRegiser.setOnClickListener(new View.OnClickListener() {
+        FrameLayout frameLayout = findViewById(R.id.SignUpBtn);
+        ProgressBar progressBar = findViewById(R.id.SignUpProgress);
+        TextView textView = findViewById(R.id.text);
+        frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String firstName = editTextFName.getText().toString();
@@ -53,6 +59,19 @@ public class SignUp extends AppCompatActivity {
                 String phone = editTextPhone.getText().toString();
                 String pass = editTextPass.getText().toString();
                 String confirmPass = editTextConfirmPass.getText().toString();
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        textView.setVisibility(View.VISIBLE);
+
+                    }
+                },2000);
+
+
 
 
                 if (TextUtils.isEmpty(firstName)){
@@ -72,6 +91,9 @@ public class SignUp extends AppCompatActivity {
                     editTextPass.requestFocus();
                 } else if (TextUtils.isEmpty(phone)){
                     editTextPhone.setError("Phone is required");
+                    editTextPhone.requestFocus();
+                } else if(phone.length() != 11){
+                    editTextPhone.setError("Please enter a valid phone number");
                     editTextPhone.requestFocus();
                 } else if (pass.length() < 8){
                     editTextPass.setError("Password is weak");

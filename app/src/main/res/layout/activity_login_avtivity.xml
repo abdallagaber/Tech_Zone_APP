@@ -106,25 +106,39 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3"
             app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/buttonRegSignup"
-            style="@android:style/Widget.Button"
+        <FrameLayout
+            android:id="@+id/SignUpBtn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/orange_button_background"
-            android:text="LogIn"
-            android:textColor="#ffffff"
-            android:textSize="24sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.038" />
+            app:layout_constraintVertical_bias="0.038">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Log In"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/SignUpProgress"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone"/>
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
