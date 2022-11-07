@@ -57,7 +57,7 @@ public class LoginAvtivity extends AppCompatActivity {
                         textView.setVisibility(View.VISIBLE);
 
                     }
-                },3000);
+                },1200);
 
 
                 if(TextUtils.isEmpty(textEmail)) {
