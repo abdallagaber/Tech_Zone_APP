@@ -31,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
     private EditText editTextFName,editTextLName,editTextEmail,editTextPhone,editTextPass,editTextConfirmPass;
@@ -47,6 +49,8 @@ public class SignUp extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextRegEmail);
         editTextPass = findViewById(R.id.editTextRegPass);
         editTextConfirmPass = findViewById(R.id.editTextRegConfirmPass);
+
+
         FrameLayout frameLayout = findViewById(R.id.SignUpBtn);
         ProgressBar progressBar = findViewById(R.id.SignUpProgress);
         TextView textView = findViewById(R.id.text);
@@ -69,8 +73,13 @@ public class SignUp extends AppCompatActivity {
                         textView.setVisibility(View.VISIBLE);
 
                     }
-                },2000);
+                },800);
 
+
+                String phoneRegex = "[0][1][0,1,2,5][0-9]{8}";
+                Matcher phoneMatcher;
+                Pattern mobilePattern = Pattern.compile(phoneRegex);
+                phoneMatcher = mobilePattern.matcher(phone);
 
 
 
@@ -86,22 +95,25 @@ public class SignUp extends AppCompatActivity {
                 } else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     editTextEmail.setError("Valid Email is required");
                     editTextEmail.requestFocus();
-                } else if (TextUtils.isEmpty(pass)){
-                    editTextPass.setError("Password is required");
-                    editTextPass.requestFocus();
-                } else if (TextUtils.isEmpty(phone)){
+                }  else if (TextUtils.isEmpty(phone)){
                     editTextPhone.setError("Phone is required");
                     editTextPhone.requestFocus();
                 } else if(phone.length() != 11){
                     editTextPhone.setError("Please enter a valid phone number");
                     editTextPhone.requestFocus();
-                } else if (pass.length() < 8){
-                    editTextPass.setError("Password is weak");
+                } else if (!phoneMatcher.find()){
+                    editTextPhone.setError("Please enter a valid phone number");
+                    editTextPhone.requestFocus();
+                } else if (TextUtils.isEmpty(pass)){
+                    editTextPass.setError("Password is required");
                     editTextPass.requestFocus();
                 } else if (TextUtils.isEmpty(confirmPass)){
                     editTextConfirmPass.setError("Password Confirmation is required");
                     editTextConfirmPass.requestFocus();
-                } else if (!pass.equals(confirmPass)){
+                } else if (pass.length() < 8){
+                    editTextPass.setError("Password is weak");
+                    editTextPass.requestFocus();
+                }  else if (!pass.equals(confirmPass)){
                     editTextConfirmPass.setError("Password Confirmation is required");
                     editTextConfirmPass.requestFocus();
                 } else {
