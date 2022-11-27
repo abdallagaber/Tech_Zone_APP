@@ -1,6 +1,9 @@
 package com.example.mobileproject;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,19 +20,36 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
+import com.firebase.ui.auth.IdpResponse;
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LoginAvtivity extends AppCompatActivity {
-    EditText editTextLoginEmail , editTextLoginPassword;
+    EditText editTextLoginEmail, editTextLoginPassword;
     FirebaseAuth authProfile;
     private static final String TAG = "LoginActivity";
+
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new FirebaseAuthUIActivityResultContract(),
+            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
+                @Override
+                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
+                    onSignInResult(result);
+                }
+            }
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,20 +77,20 @@ public class LoginAvtivity extends AppCompatActivity {
                         textView.setVisibility(View.VISIBLE);
 
                     }
-                },1200);
+                }, 1200);
 
 
-                if(TextUtils.isEmpty(textEmail)) {
+                if (TextUtils.isEmpty(textEmail)) {
                     editTextLoginEmail.setError("E-mail is required");
                     editTextLoginEmail.requestFocus();
-                }else if(!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()){
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
                     editTextLoginEmail.setError("Enter a valid E-mail ");
                     editTextLoginEmail.requestFocus();
-                }else if(TextUtils.isEmpty(textPassword)){
+                } else if (TextUtils.isEmpty(textPassword)) {
                     editTextLoginPassword.setError("Password is required");
                     editTextLoginPassword.requestFocus();
-                }else{
-                    loginUser(textEmail,textPassword);
+                } else {
+                    loginUser(textEmail, textPassword);
                 }
             }
         });
@@ -78,28 +98,53 @@ public class LoginAvtivity extends AppCompatActivity {
     }
 
     private void loginUser(String textEmail, String textPassword) {
-        authProfile.signInWithEmailAndPassword(textEmail,textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        authProfile.signInWithEmailAndPassword(textEmail, textPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(LoginAvtivity.this , "Logined successfuly" , Toast.LENGTH_LONG).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(LoginAvtivity.this, "Logined successfuly", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LoginAvtivity.this, HomeActivity.class));
                     finish();
-                }else{
-                    try{
+                } else {
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthInvalidUserException e){
+                    } catch (FirebaseAuthInvalidUserException e) {
                         editTextLoginEmail.setError("User doesn't exist! please sign up");
                         editTextLoginEmail.requestFocus();
-                    }catch(FirebaseAuthInvalidCredentialsException e){
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
                         editTextLoginPassword.setError("Password is incorrect. kindly,try again");
                         editTextLoginPassword.requestFocus();
-                    }catch(Exception e){
-                        Log.e(TAG,e.getMessage());
-                        Toast.makeText(LoginAvtivity.this , e.getMessage() , Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(LoginAvtivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
+    }
+
+    public void signin(View view) {
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+
+                new AuthUI.IdpConfig.GoogleBuilder().build()
+        );
+
+// Create and launch sign-in intent
+        Intent signInIntent = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+                .build();
+        signInLauncher.launch(signInIntent);
+
+    }
+
+
+    private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
+        IdpResponse response = result.getIdpResponse();
+        if (result.getResultCode() == RESULT_OK) {
+            startActivity(new Intent(this, HomeActivity.class));
+        } else {
+
+        }
     }
 }
