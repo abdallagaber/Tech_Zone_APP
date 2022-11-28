@@ -95,6 +95,15 @@ BottomNavigationView bottomNavigationView;
                 holder.txtProductName.setText(model.getName());
                 holder.txtProductPrice.setText("EGP "+model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.productImage);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(HomeActivity.this,productInfo.class);
+                        intent.putExtra("id",model.getId());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
