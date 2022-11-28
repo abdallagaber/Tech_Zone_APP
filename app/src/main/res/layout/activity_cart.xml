@@ -36,26 +36,4 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="273dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/searchview"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search here..."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.975"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="104dp"
-        android:layout_height="64dp"
-        app:layout_constraintEnd_toStartOf="@+id/searchView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tech_zone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
