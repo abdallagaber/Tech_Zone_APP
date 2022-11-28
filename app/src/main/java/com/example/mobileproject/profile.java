@@ -6,11 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class profile extends AppCompatActivity {
 BottomNavigationView bottomNavigationView;
+    private FirebaseAuth auth;
+    private Button btnsignout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,5 +59,21 @@ BottomNavigationView bottomNavigationView;
                 return false;
             }
         });
+
+
+        auth = FirebaseAuth.getInstance();
+        btnsignout = findViewById(R.id.signOutButton);
+
+        btnsignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                Intent intent = new Intent(profile.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(profile.this, "Signed out Successfully!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
