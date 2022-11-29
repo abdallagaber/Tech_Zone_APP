@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,19 +33,50 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.*;
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity {
-BottomNavigationView bottomNavigationView;
+
+
+    BottomNavigationView bottomNavigationView;
+
+
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private DatabaseReference productRef;
+
     private RecyclerView recyclerview;
     RecyclerView.LayoutManager layoutmanager;
+    SearchView search;
+    String searchInput;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);
+        search = findViewById(R.id.searchView);
+        productRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchInput = search.getQuery().toString();
+                onStart();
+                return false;
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -74,8 +107,6 @@ BottomNavigationView bottomNavigationView;
             }
         });
 
-        productRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
         recyclerview = findViewById(R.id.lap);
         recyclerview.setHasFixedSize(true);
         layoutmanager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
@@ -87,24 +118,26 @@ BottomNavigationView bottomNavigationView;
         super.onStart();
 
         FirebaseRecyclerOptions<product> options =
-                new FirebaseRecyclerOptions.Builder<product>().setQuery(productRef,product.class).build();
+                new FirebaseRecyclerOptions.Builder<product>().setQuery(productRef.orderByChild("name").startAt(searchInput).endAt(searchInput+"\uf8ff"),product.class).build();
 
         FirebaseRecyclerAdapter<product, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<product, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull product model) {
-                holder.txtProductName.setText(model.getName());
-                holder.txtProductPrice.setText("EGP "+model.getPrice());
-                Picasso.get().load(model.getImage()).into(holder.productImage);
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(HomeActivity.this,productInfo.class);
-                        intent.putExtra("id",model.getId());
-                        startActivity(intent);
-                    }
-                });
-            }
+                    holder.txtProductName.setText(model.getName());
+                    holder.txtProductPrice.setText("EGP "+model.getPrice());
+                    Picasso.get().load(model.getImage()).into(holder.productImage);
+
+
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(HomeActivity.this,productInfo.class);
+                            intent.putExtra("id",model.getId());
+                            startActivity(intent);
+                        }
+                    });
+                }
 
             @NonNull
             @Override
@@ -117,5 +150,9 @@ BottomNavigationView bottomNavigationView;
         recyclerview.setAdapter(adapter);
         adapter.startListening();
 
+
     }
+
+
+
 }
