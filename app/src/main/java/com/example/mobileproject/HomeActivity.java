@@ -1,10 +1,12 @@
 package com.example.mobileproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -89,18 +91,22 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.categories:
                         startActivity(new Intent(getApplicationContext(),categories.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),profile.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.cart:
                         startActivity(new Intent(getApplicationContext(),cart.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.contactUs:
                         startActivity(new Intent(getApplicationContext(),contactUs.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 return false;
@@ -112,6 +118,26 @@ public class HomeActivity extends AppCompatActivity {
         layoutmanager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
         recyclerview.setLayoutManager(layoutmanager);
 
+    }
+
+
+    public void onBackPressed(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(HomeActivity.this);
+        alertDialog.setTitle("Exit App");
+        alertDialog.setMessage("Do you want to exit app?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
     protected void onStart(){

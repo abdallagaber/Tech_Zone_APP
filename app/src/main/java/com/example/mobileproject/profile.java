@@ -62,18 +62,22 @@ BottomNavigationView bottomNavigationView;
                     case R.id.categories:
                         startActivity(new Intent(getApplicationContext(),categories.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),profile.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.cart:
                         startActivity(new Intent(getApplicationContext(),cart.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.contactUs:
                         startActivity(new Intent(getApplicationContext(),contactUs.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 return false;
@@ -97,6 +101,14 @@ BottomNavigationView bottomNavigationView;
         });
 
     }
+
+    public void onBackPressed(){
+        Intent i = new Intent(this,HomeActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.left_in,R.anim.right_out);
+    }
+
+
     private void showUserProfile(FirebaseUser firebaseUser) {
         String userID = firebaseUser.getUid();
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Users");
