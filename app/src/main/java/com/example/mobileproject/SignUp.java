@@ -119,7 +119,9 @@ public class SignUp extends AppCompatActivity {
                     editTextConfirmPass.requestFocus();
                 } else {
                     firstName = firstName.replaceAll("\\s", "");
+                    firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
                     lastName = lastName.replaceAll("\\s", "");
+                    lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
                     registerUser(firstName,lastName,phone,email,pass);
                 }
 
@@ -143,7 +145,7 @@ public class SignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(firstName+" "+lastName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName,phone," "," ");
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName,phone," ");
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                     reference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {

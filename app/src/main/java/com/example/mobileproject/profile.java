@@ -26,8 +26,8 @@ public class profile extends AppCompatActivity {
 BottomNavigationView bottomNavigationView;
     private FirebaseAuth auth;
     private Button btnsignout;
-    private TextView textFullName, textEmail,textBirth, textMobile, textAddress;
-    private String name, email, phone, birth, address;
+    private TextView textFullName, textEmail, textMobile, textAddress;
+    private String name, email, phone, address;
     private ImageView image;
 
     @Override
@@ -36,7 +36,6 @@ BottomNavigationView bottomNavigationView;
         setContentView(R.layout.activity_profile);
         textFullName = findViewById(R.id.name);
         textEmail = findViewById(R.id.email);
-        textBirth = findViewById(R.id.birth);
         textMobile = findViewById(R.id.mobile);
         textAddress = findViewById(R.id.address);
 
@@ -90,6 +89,7 @@ BottomNavigationView bottomNavigationView;
             public void onClick(View view) {
                 auth.signOut();
                 Intent intent = new Intent(profile.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
                 Toast.makeText(profile.this, "Signed out Successfully!", Toast.LENGTH_SHORT).show();
@@ -109,11 +109,9 @@ BottomNavigationView bottomNavigationView;
                     email = firebaseUser.getEmail();
                     phone = readWriteUserDetails.phone;
                     address = readWriteUserDetails.address;
-                    birth = readWriteUserDetails.DOB;
                     textFullName.setText(name);
                     textEmail.setText(email);
                     textMobile.setText(phone);
-                    textBirth.setText(birth);
                     textAddress.setText(address);
                 }
             }
