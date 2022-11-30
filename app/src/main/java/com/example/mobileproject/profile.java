@@ -108,10 +108,13 @@ BottomNavigationView bottomNavigationView;
                     name = firebaseUser.getDisplayName();
                     email = firebaseUser.getEmail();
                     phone = readWriteUserDetails.phone;
-
+                    address = readWriteUserDetails.address;
+                    birth = readWriteUserDetails.DOB;
                     textFullName.setText(name);
                     textEmail.setText(email);
                     textMobile.setText(phone);
+                    textBirth.setText(birth);
+                    textAddress.setText(address);
                 }
             }
 

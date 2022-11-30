@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,7 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
-    private EditText editTextFName,editTextLName,editTextEmail,editTextPhone,editTextPass,editTextConfirmPass,editTextName,editTextBirth, editTextAddress;
+    private EditText editTextFName,editTextLName,editTextEmail,editTextPhone,editTextPass,editTextConfirmPass;
     private static final String TAG = "SignUp";
 
     @Override
@@ -63,9 +64,6 @@ public class SignUp extends AppCompatActivity {
                 String phone = editTextPhone.getText().toString();
                 String pass = editTextPass.getText().toString();
                 String confirmPass = editTextConfirmPass.getText().toString();
-                String name = editTextName.getText().toString();
-                String birth = editTextBirth.getText().toString();
-                String address = editTextAddress.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.GONE);
 
@@ -120,7 +118,9 @@ public class SignUp extends AppCompatActivity {
                     editTextConfirmPass.setError("Password Confirmation is required");
                     editTextConfirmPass.requestFocus();
                 } else {
-                    registerUser(firstName,lastName,phone,email,pass,address,birth,name);
+                    firstName = firstName.replaceAll("\\s", "");
+                    lastName = lastName.replaceAll("\\s", "");
+                    registerUser(firstName,lastName,phone,email,pass);
                 }
 
 
@@ -130,15 +130,20 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    private void registerUser(String firstName, String lastName, String phone, String email, String pass,String address, String name, String birth) {
+    private void registerUser(String firstName, String lastName, String phone, String email, String pass) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName, phone,email," ", name, " ");
+
+
+                    FirebaseUser firebaseUser = auth.getCurrentUser();
+                    UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(firstName+" "+lastName).build();
+                    firebaseUser.updateProfile(profileChangeRequest);
+
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName,phone," "," ");
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                     reference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -146,7 +151,6 @@ public class SignUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 
                             Toast.makeText(SignUp.this, "User registered succesfully", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(SignUp.this, MainActivity.class);
                             finish();
 
                         }});
