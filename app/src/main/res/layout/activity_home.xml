@@ -1,62 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white_abstract_wallpaper_23_2148830026"
     tools:context=".HomeActivity">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lap"
         android:layout_width="match_parent"
-        android:layout_height="710dp"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="55dp"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="772dp"
         android:background="@drawable/bottem_nav_background"
         app:itemIconTint="#ED9411"
         app:itemRippleColor="#ED9411"
         app:itemTextColor="#ED9411"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        android:layout_alignParentBottom="true"
         app:menu="@menu/bottem_nav">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="273dp"
-        android:layout_height="41dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:background="@drawable/searchview"
         android:iconifiedByDefault="false"
         android:queryHint="Search here..."
-        app:layout_constraintBottom_toTopOf="@+id/lap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/imageView"/>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="104dp"
-        android:layout_height="64dp"
+        android:layout_width="110dp"
+        android:layout_height="65dp"
         app:layout_constraintEnd_toStartOf="@+id/searchView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tech_zone" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
