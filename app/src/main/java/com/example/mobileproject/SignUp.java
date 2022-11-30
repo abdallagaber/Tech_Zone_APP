@@ -35,7 +35,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
-    private EditText editTextFName,editTextLName,editTextEmail,editTextPhone,editTextPass,editTextConfirmPass;
+    private EditText editTextFName,editTextLName,editTextEmail,editTextPhone,editTextPass,editTextConfirmPass,editTextName,editTextBirth, editTextAddress;
     private static final String TAG = "SignUp";
 
     @Override
@@ -63,6 +63,9 @@ public class SignUp extends AppCompatActivity {
                 String phone = editTextPhone.getText().toString();
                 String pass = editTextPass.getText().toString();
                 String confirmPass = editTextConfirmPass.getText().toString();
+                String name = editTextName.getText().toString();
+                String birth = editTextBirth.getText().toString();
+                String address = editTextAddress.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.GONE);
 
@@ -117,7 +120,7 @@ public class SignUp extends AppCompatActivity {
                     editTextConfirmPass.setError("Password Confirmation is required");
                     editTextConfirmPass.requestFocus();
                 } else {
-                    registerUser(firstName,lastName,phone,email,pass);
+                    registerUser(firstName,lastName,phone,email,pass,address,birth,name);
                 }
 
 
@@ -127,7 +130,7 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    private void registerUser(String firstName, String lastName, String phone, String email, String pass) {
+    private void registerUser(String firstName, String lastName, String phone, String email, String pass,String address, String name, String birth) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -135,13 +138,10 @@ public class SignUp extends AppCompatActivity {
                 if (task.isSuccessful()){
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                    HashMap<String,Object> userDataMap = new HashMap<>();
-                    userDataMap.put("firstName",firstName);
-                    userDataMap.put("lastName",lastName);
-                    userDataMap.put("phone",phone);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName, phone,email," ", name, " ");
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-                    reference.child(firebaseUser.getUid()).updateChildren(userDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    reference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 

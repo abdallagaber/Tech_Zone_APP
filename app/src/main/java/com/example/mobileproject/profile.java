@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,11 +26,29 @@ public class profile extends AppCompatActivity {
 BottomNavigationView bottomNavigationView;
     private FirebaseAuth auth;
     private Button btnsignout;
+    private TextView textFullName, textEmail,textBirth, textMobile, textAddress;
+    private String name, email, phone, birth, address;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        textFullName = findViewById(R.id.name);
+        textEmail = findViewById(R.id.email);
+        textBirth = findViewById(R.id.birth);
+        textMobile = findViewById(R.id.mobile);
+        textAddress = findViewById(R.id.address);
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser == null){
+            Toast.makeText(profile.this, "Something went wrong, no details are found.", Toast.LENGTH_LONG).show();
+        } else {
+            showUserProfile(firebaseUser);
+        }
+
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -76,4 +97,32 @@ BottomNavigationView bottomNavigationView;
         });
 
     }
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Users");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ReadWriteUserDetails readWriteUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+                if ( readWriteUserDetails != null){
+                    name = firebaseUser.getDisplayName();
+                    email = firebaseUser.getEmail();
+                    phone = readWriteUserDetails.phone;
+
+                    textFullName.setText(name);
+                    textEmail.setText(email);
+                    textMobile.setText(phone);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(profile.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+    }
+
+
 }
