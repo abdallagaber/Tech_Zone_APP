@@ -103,8 +103,10 @@ public class LoginAvtivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(LoginAvtivity.this, "Logined successfuly", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(LoginAvtivity.this, HomeActivity.class));
-                    finish();
+                    Intent intent = new Intent(LoginAvtivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
                 } else {
                     try {
                         throw task.getException();
@@ -143,6 +145,7 @@ public class LoginAvtivity extends AppCompatActivity {
         IdpResponse response = result.getIdpResponse();
         if (result.getResultCode() == RESULT_OK) {
             startActivity(new Intent(this, HomeActivity.class));
+            finish();
         } else {
 
         }
