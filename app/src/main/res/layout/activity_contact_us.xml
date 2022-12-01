@@ -13,12 +13,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="121dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="104dp"
+        android:fontFamily="serif"
         android:gravity="center_horizontal"
         android:text="Our Team"
         android:textColor="#D54A5798"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -39,24 +41,24 @@
                 android:layout_width="370dp"
                 android:layout_height="585dp"
                 android:layout_margin="20dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="100dp"
                 android:layout_marginEnd="50dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="100dp">
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="380dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/abdullah_gaber" />
-                </LinearLayout>
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -74,9 +76,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/abdullah" />
 
 
@@ -98,9 +100,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/ali" />
 
 
@@ -122,9 +124,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/amany" />
 
 
@@ -146,9 +148,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/rawan" />
 
 
@@ -171,9 +173,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/khalid" />
 
 
@@ -195,9 +197,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/youssef" />
 
 
@@ -219,9 +221,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="350dp"
-                        android:layout_height="585dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="450dp"
+                        android:layout_height="650dp"
+                        android:layout_alignParentEnd="true"
                         android:src="@drawable/zeyad" />
 
 
