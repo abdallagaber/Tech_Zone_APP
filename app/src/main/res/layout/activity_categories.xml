@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/white_abstract_wallpaper_23_2148830026"
     tools:context=".categories">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
+        android:layout_width="415dp"
         android:layout_height="56dp"
         android:background="@drawable/bottem_nav_background"
         app:itemIconTint="#ED9411"
@@ -24,16 +25,169 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
-        android:text="categories"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pc_category"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/orange_button_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="187dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/kisspng_macintosh_computer_monitor_output_device_mac_computer_vector_material_5a9f2fe5457800_0861457115203819252846" />
+
+        <TextView
+            android:id="@+id/textViewPC"
+            android:layout_width="117dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="12dp"
+            android:text="PC"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/laptop_category"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginBottom="268dp"
+        android:background="@drawable/orange_button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gglap" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="117dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="12dp"
+            android:text="Laptop"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="104dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tech_zone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ac_category"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="172dp"
+        android:background="@drawable/orange_button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="187dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ghead" />
+
+        <TextView
+            android:id="@+id/textViewAC"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="12dp"
+            android:text="Accessories"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/com_category"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="172dp"
+        android:background="@drawable/orange_button_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="165dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pc_components1" />
+
+        <TextView
+            android:id="@+id/textViewCOM"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginTop="12dp"
+            android:text="PC Components"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
