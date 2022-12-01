@@ -8,22 +8,12 @@
     tools:context=".HomeActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lap"
+        android:layout_marginRight="3dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
         android:layout_marginTop="55dp"/>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/bottem_nav_background"
-        app:itemIconTint="#ED9411"
-        app:itemRippleColor="#ED9411"
-        app:itemTextColor="#ED9411"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottem_nav">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
@@ -47,5 +37,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tech_zone" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/bottem_nav_background"
+        app:itemIconTint="#ED9411"
+        app:itemRippleColor="#ED9411"
+        app:itemTextColor="#ED9411"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottem_nav">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </RelativeLayout>
