@@ -28,8 +28,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pc_category"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
+        android:layout_width="173dp"
+        android:layout_height="211dp"
         android:layout_marginTop="152dp"
         android:background="@drawable/orange_button_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
             android:id="@+id/textViewPC"
             android:layout_width="117dp"
             android:layout_height="29dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:text="PC"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -64,8 +64,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/laptop_category"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
+        android:layout_width="173dp"
+        android:layout_height="211dp"
         android:layout_marginTop="152dp"
         android:layout_marginBottom="268dp"
         android:background="@drawable/orange_button_background"
@@ -91,13 +91,14 @@
             android:id="@+id/textView"
             android:layout_width="117dp"
             android:layout_height="29dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="32dp"
             android:text="Laptop"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,13 +116,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ac_category"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginBottom="172dp"
+        android:layout_width="173dp"
+        android:layout_height="211dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/orange_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -139,14 +140,13 @@
             android:id="@+id/textViewAC"
             android:layout_width="wrap_content"
             android:layout_height="29dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:text="Accessories"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
@@ -154,13 +154,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/com_category"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginBottom="172dp"
+        android:layout_width="173dp"
+        android:layout_height="211dp"
+        android:layout_marginBottom="200dp"
         android:background="@drawable/orange_button_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -177,14 +177,14 @@
             android:id="@+id/textViewCOM"
             android:layout_width="wrap_content"
             android:layout_height="29dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="28dp"
             android:text="PC Components"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 

@@ -54,7 +54,7 @@ public class productInfo extends AppCompatActivity {
 
                     pname.setText(product.getName());
                     pdescription.setText(product.getDescription());
-                    productprice.setText("EGP " + product.getPrice());
+                    productprice.setText(product.getPrice()+" LE");
                     Picasso.get().load(product.getImage()).into(productimage);
 
 
