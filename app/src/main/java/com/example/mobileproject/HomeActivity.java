@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.contactUs:
-                        startActivity(new Intent(getApplicationContext(),contactUs.class));
+                        startActivity(new Intent(getApplicationContext(),MainOfContact.class));
                         overridePendingTransition(0,0);
                         finish();
                         return true;

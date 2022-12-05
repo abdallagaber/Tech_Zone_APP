@@ -56,8 +56,9 @@ public class categories extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.contactUs:
-                        startActivity(new Intent(getApplicationContext(),contactUs.class));
+                        startActivity(new Intent(getApplicationContext(),MainOfContact.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 return false;

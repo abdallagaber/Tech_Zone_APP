@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/adamina</item>
+        <item>@font/alegreya_bold</item>
+        <item>@font/arimo</item>
         <item>@font/autour_one</item>
+        <item>@font/be_vietnam_medium</item>
         <item>@font/calistoga</item>
+        <item>@font/candal</item>
+        <item>@font/cantata_one</item>
+        <item>@font/chivo_light</item>
         <item>@font/coustard</item>
     </array>
 </resources>

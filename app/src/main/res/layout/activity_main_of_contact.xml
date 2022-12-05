@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_abstract_wallpaper_23_2148830026"
+    tools:context=".MainOfContact">
+
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="621dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        app:srcCompat="@drawable/picture_forbackcontact" />
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/slideViewPaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        tools:ignore="SpeakableTextPresentCheck">
+    </androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/dotsLayout"
+        android:layout_width="74dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/bottomNavigationView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginBottom="27dp"
+        android:orientation="horizontal" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/bottem_nav_background"
+        app:itemIconTint="#ED9411"
+        app:itemRippleColor="#ED9411"
+        app:itemTextColor="#ED9411"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottem_nav">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>
