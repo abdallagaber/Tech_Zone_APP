@@ -29,8 +29,7 @@
         android:layout_marginEnd="-1dp"
         android:fontFamily="@font/chivo_light"
         android:gravity="center"
-        android:text="Abdullah Gaber Ashour
-"
+        android:text="Abdullah Gaber Ashour"
         android:textColor="#FFFFFF"
         android:textSize="27dp"
         android:textStyle="bold" />
