@@ -159,14 +159,27 @@
 
         </RelativeLayout>
 
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="173dp"
+            android:layout_height="52dp"
+            android:layout_below="@+id/relative_2"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/orange_button_background"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/signOutButton"
             android:layout_width="173dp"
             android:layout_height="52dp"
-            android:layout_below="@id/relative_2"
+            android:layout_below="@id/edit_btn"
             android:layout_centerInParent="true"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/orange_button_background"
             android:text="Sign Out"

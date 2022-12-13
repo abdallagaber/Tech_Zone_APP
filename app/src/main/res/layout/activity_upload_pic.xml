@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UploadPic">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_abstract_wallpaper_23_2148830026"
+        android:padding="15dp"
+        android:layout_margin="15dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_upload"
+            android:text="Upload your picture"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
+        <Button
+            android:id="@+id/choose_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_upload"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/orange_button_background"
+            android:text="Choose a picture"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:fontFamily="serif"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@+id/choose_btn"
+            android:layout_marginTop="20dp"
+            android:id="@+id/prof_view"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_button_background"
+            android:layout_below="@+id/prof_view"
+            android:layout_marginTop="20dp"
+            android:layout_centerInParent="true"
+            android:text="Upload Picture"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:fontFamily="serif"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

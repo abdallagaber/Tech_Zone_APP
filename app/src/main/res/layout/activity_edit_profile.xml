@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/white_abstract_wallpaper_23_2148830026"
+    tools:context=".EditProfile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/relative_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Editing your profile!"
+                android:textAlignment="center"
+                android:textSize="32sp"
+                android:fontFamily="serif"
+                android:textColor="@color/black"
+                android:id="@+id/edit_title"/>
+
+            <TextView
+                android:id="@+id/name_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_title"
+                android:textColor="@color/black"
+                android:text="Name"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:padding="6dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_edit"
+                android:layout_marginTop="12dp"
+                android:id="@+id/editText_name"
+                android:inputType="textPersonName"
+                android:padding="6dp"
+                android:hint="Enter full name"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/image_edit"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@+id/editText_name"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/profile2" />
+
+
+            <TextView
+                android:id="@+id/email_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_edit"
+                android:textColor="@color/black"
+                android:text="Email"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:padding="6dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_edit"
+                android:layout_marginTop="12dp"
+                android:id="@+id/editText_email"
+                android:inputType="textEmailAddress"
+                android:padding="6dp"
+                android:hint="Enter new email"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/phone_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_email"
+                android:textColor="@color/black"
+                android:text="Mobile Number"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:padding="6dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phone_edit"
+                android:layout_marginTop="12dp"
+                android:id="@+id/editText_phone"
+                android:inputType="phone"
+                android:padding="6dp"
+                android:hint="Enter new number"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/address_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_phone"
+                android:textColor="@color/black"
+                android:text="Address"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:padding="6dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address_edit"
+                android:layout_marginTop="12dp"
+                android:id="@+id/editText_address"
+                android:inputType="textEmailAddress"
+                android:padding="6dp"
+                android:hint="Enter your address"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/new_edit_btn"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_edit"
+            android:layout_centerInParent="true"
+            android:background="@drawable/orange_button_background"
+            android:fontFamily="serif"
+            android:text="Upload the new edit"
+            android:textAllCaps="false"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
