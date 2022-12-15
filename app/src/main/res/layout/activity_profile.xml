@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +7,9 @@
     android:orientation="vertical"
     tools:context=".profile">
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <RelativeLayout
             android:id="@+id/relative"
-            android:layout_width="394dp"
+            android:layout_width="match_parent"
             android:layout_height="360dp"
             android:background="@drawable/top_background">
 
@@ -23,20 +18,15 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_centerInParent="true"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/profile2" />
-
-
-
-
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relative_2"
             android:layout_width="match_parent"
             android:layout_height="350dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="290dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/white_background">
 
@@ -44,9 +34,9 @@
                 android:id="@+id/icon_profile"
                 android:layout_width="40dp"
                 android:layout_height="36dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/prof_icon"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/prof_icon" />
 
             <TextView
                 android:id="@+id/name"
@@ -61,11 +51,11 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#4068ac"
                 android:layout_below="@id/name"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#4068ac">
 
             </View>
 
@@ -75,9 +65,9 @@
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 android:layout_below="@id/name"
-                android:layout_marginTop="44dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/mail_icon"/>
+                android:layout_marginTop="44dp"
+                android:background="@drawable/mail_icon" />
 
             <TextView
                 android:id="@+id/email"
@@ -94,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_below="@id/email"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#4068ac" />
 
@@ -104,8 +94,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/email"
-                android:layout_marginTop="44dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="44dp"
                 android:background="@drawable/phone_icon" />
 
             <TextView
@@ -123,8 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_below="@id/mobile"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#4068ac" />
 
@@ -133,8 +123,8 @@
                 android:layout_width="45dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/mobile"
-                android:layout_marginTop="44dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="44dp"
                 android:background="@drawable/home_icon" />
 
             <TextView
@@ -152,8 +142,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_below="@id/address"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#4068ac" />
 
@@ -163,53 +153,37 @@
             android:id="@+id/edit_btn"
             android:layout_width="173dp"
             android:layout_height="52dp"
-            android:layout_below="@+id/relative_2"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="7dp"
+            android:layout_below="@id/relative_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:background="@drawable/orange_button_background"
             android:text="Edit Profile"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
 
-
         <Button
             android:id="@+id/signOutButton"
             android:layout_width="173dp"
             android:layout_height="52dp"
             android:layout_below="@id/edit_btn"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/orange_button_background"
             android:text="Sign Out"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
 
-    </RelativeLayout>
-    <LinearLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/bottem_nav_background"
-        app:itemIconTint="#ED9411"
-        app:itemRippleColor="#ED9411"
-        app:itemTextColor="#ED9411"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/bottem_nav">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-</LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottem_nav_background"
+            app:itemIconTint="#ED9411"
+            app:itemRippleColor="#ED9411"
+            app:itemTextColor="#ED9411"
+            app:menu="@menu/bottem_nav">
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>
