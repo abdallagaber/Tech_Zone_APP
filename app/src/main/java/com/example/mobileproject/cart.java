@@ -100,6 +100,12 @@ public class cart extends AppCompatActivity {
                 holder.txtProductName.setText(model.getName());
                 holder.txtProductPrice.setText(model.getPrice()+" LE");
                 Picasso.get().load(model.getImage()).into(holder.productImage);
+                holder.delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        productRef.child(model.getId()).removeValue();
+                    }
+                });
             }
 
             @NonNull
