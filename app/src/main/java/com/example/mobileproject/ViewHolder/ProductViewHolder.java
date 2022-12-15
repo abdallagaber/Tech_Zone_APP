@@ -15,7 +15,7 @@ import com.example.mobileproject.R;
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView txtProductName,txtProductPrice;
-    public ImageView productImage;
+    public ImageView productImage,delete;
     public ItemClickListner listner;
 
     public ProductViewHolder(@NonNull View itemView) {
@@ -25,6 +25,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         productImage = (ImageView) itemView.findViewById(R.id.product_image);
         txtProductName = (TextView) itemView.findViewById(R.id.product_name);
         txtProductPrice = (TextView) itemView.findViewById(R.id.product_price);
+        delete = (ImageView) itemView.findViewById(R.id.deleteProduct);
 
 }
     public void setItemClickLitner(ItemClickListner listner){
