@@ -31,6 +31,7 @@ public class cart extends AppCompatActivity {
     private Button checkout;
     private TextView totalPrice;
     private DatabaseReference productRef;
+    private int overTotalPrice = 0;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,11 @@ public class cart extends AppCompatActivity {
                         productRef.child(model.getId()).removeValue();
                     }
                 });
+                int price = ((Integer.valueOf(model.getPrice())));
+                overTotalPrice = overTotalPrice+price;
+                totalPrice.setText(String.valueOf("Total price = "+overTotalPrice));
+
+
             }
 
             @NonNull
