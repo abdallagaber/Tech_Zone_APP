@@ -1,10 +1,12 @@
 package com.example.mobileproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -97,6 +99,17 @@ public class cart extends AppCompatActivity {
         FirebaseRecyclerAdapter<product, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<product, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull product model) {
+                int price = ((Integer.valueOf(model.getPrice())));
+                overTotalPrice = overTotalPrice+price;
+                totalPrice.setText(String.valueOf("Total price : "+overTotalPrice));
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(cart.this , productInfo.class);
+                        intent.putExtra("id" , model.getId());
+                        startActivity(intent);
+                    }
+                });
 
                 holder.txtProductName.setText(model.getName());
                 holder.txtProductPrice.setText(model.getPrice()+" LE");
@@ -105,11 +118,10 @@ public class cart extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         productRef.child(model.getId()).removeValue();
+                        overTotalPrice = overTotalPrice-price;
+                        totalPrice.setText(String.valueOf("Total price : "+overTotalPrice));
                     }
                 });
-                int price = ((Integer.valueOf(model.getPrice())));
-                overTotalPrice = overTotalPrice+price;
-                totalPrice.setText(String.valueOf("Total price = "+overTotalPrice));
 
 
             }
