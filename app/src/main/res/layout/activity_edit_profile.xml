@@ -28,18 +28,16 @@
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
+        android:layout_centerHorizontal="true"
         android:layout_width="140dp"
         android:layout_height="140dp"
         app:cardCornerRadius="150dp"
         app:cardBackgroundColor="#2196F3"
-        android:layout_marginLeft="120dp"
         android:layout_marginTop="145dp">
-
         <androidx.cardview.widget.CardView
             android:layout_width="140dp"
             android:layout_height="140dp"
-            app:cardCornerRadius="150dp"
-            android:layout_gravity="center">
+            app:cardCornerRadius="150dp">
             <ImageView
                 android:id="@+id/no_profile_image"
                 android:layout_width="match_parent"

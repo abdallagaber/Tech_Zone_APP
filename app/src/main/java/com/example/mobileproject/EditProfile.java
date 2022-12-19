@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -34,7 +35,8 @@ public class EditProfile extends AppCompatActivity {
 
     private EditText nameEdit, mobileEdit, addressEdit;
     private ProgressBar progressBar;
-    private String name, phone, address;
+    private ImageView image;
+    private String name, phone, address,imageUri;
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private Button edit;
@@ -48,6 +50,15 @@ public class EditProfile extends AppCompatActivity {
         nameEdit = findViewById(R.id.editText_name);
         mobileEdit = findViewById(R.id.editText_phone);
         addressEdit = findViewById(R.id.editText_address);
+        image = findViewById(R.id.no_profile_image);
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EditProfile.this, UploadPic.class);
+                startActivity(i);
+            }
+        });
 
         reference = FirebaseDatabase.getInstance().getReference("Users");
         auth = FirebaseAuth.getInstance();
@@ -145,10 +156,11 @@ public class EditProfile extends AppCompatActivity {
                     name = firebaseUser.getDisplayName();
                     phone = readWriteUserDetails.phone;
                     address = readWriteUserDetails.address;
-
+                    imageUri = readWriteUserDetails.image;
                     nameEdit.setText(name);
                     mobileEdit.setText(phone);
                     addressEdit.setText(address);
+                    Picasso.get().load(imageUri).into(image);
                 } else {
                     Toast.makeText(EditProfile.this, "Something went wrong!", Toast.LENGTH_LONG).show();
                 }

@@ -41,13 +41,6 @@ public class profile extends AppCompatActivity {
         textMobile = findViewById(R.id.mobile);
         textAddress = findViewById(R.id.address);
         image = findViewById(R.id.no_profile_image);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(profile.this, UploadPic.class);
-                startActivity(i);
-            }
-        });
 
         edit = findViewById(R.id.edit_btn);
         edit.setOnClickListener(new View.OnClickListener() {

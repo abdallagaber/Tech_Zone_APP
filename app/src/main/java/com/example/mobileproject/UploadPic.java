@@ -73,8 +73,9 @@ public class UploadPic extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         Toast.makeText(UploadPic.this, " Upload Successfully", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(UploadPic.this, profile.class);
+                                        Intent i = new Intent(UploadPic.this, EditProfile.class);
                                         startActivity(i);
+                                        finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
