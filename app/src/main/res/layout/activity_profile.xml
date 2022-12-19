@@ -13,12 +13,31 @@
             android:layout_height="360dp"
             android:background="@drawable/top_background">
 
-            <ImageView
-                android:id="@+id/no_profile_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/profile2" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                app:cardCornerRadius="150dp"
+                app:cardBackgroundColor="#2196F3"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="70dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:cardCornerRadius="150dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/no_profile_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/profile2"
+                    android:rotation="90"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -36,7 +55,7 @@
                 android:layout_height="36dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/prof_icon" />
+                android:background="@drawable/ic_baseline_person_24" />
 
             <TextView
                 android:id="@+id/name"
@@ -67,7 +86,7 @@
                 android:layout_below="@id/name"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="44dp"
-                android:background="@drawable/mail_icon" />
+                android:background="@drawable/ic_baseline_email_24" />
 
             <TextView
                 android:id="@+id/email"
@@ -96,7 +115,7 @@
                 android:layout_below="@id/email"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="44dp"
-                android:background="@drawable/phone_icon" />
+                android:background="@drawable/ic_baseline_local_phone_24" />
 
             <TextView
                 android:id="@+id/mobile"
@@ -125,7 +144,7 @@
                 android:layout_below="@id/mobile"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="44dp"
-                android:background="@drawable/home_icon" />
+                android:background="@drawable/ic_baseline_location_on_24" />
 
             <TextView
                 android:id="@+id/address"
