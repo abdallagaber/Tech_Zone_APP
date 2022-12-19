@@ -145,7 +145,7 @@ public class SignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(firstName+" "+lastName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName,phone," "," ");
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(firstName, lastName,phone," ");
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                     reference.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
