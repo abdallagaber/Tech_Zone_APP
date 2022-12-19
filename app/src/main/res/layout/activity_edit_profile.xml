@@ -7,29 +7,62 @@
     android:background="@drawable/white_abstract_wallpaper_23_2148830026"
     tools:context=".EditProfile">
 
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:background="@drawable/top_background">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Start Editing your profile!"
-                android:textAlignment="center"
-                android:textSize="32sp"
-                android:fontFamily="serif"
-                android:textColor="@color/black"
-                android:id="@+id/edit_title"
-                android:layout_marginTop="35dp"/>
+        <TextView
+            android:id="@+id/edit_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Edit \nProfile"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="italic" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/name_edit"
+    <androidx.cardview.widget.CardView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:cardCornerRadius="150dp"
+        app:cardBackgroundColor="#2196F3"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="145dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            app:cardCornerRadius="150dp"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/no_profile_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/edit_title"
-                android:textColor="@color/black"
-                android:text="Name"
-                android:layout_marginTop="35dp"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"
-                android:padding="6dp"/>
+                android:layout_height="match_parent"
+                android:background="@drawable/profile2"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="268dp"
+        android:padding="6dp"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
 
     <EditText
         android:id="@+id/editText_name"
@@ -37,13 +70,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_edit"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/edit_profile_text_back"
         android:hint="Enter full name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="6dp"
         android:textColor="@color/black" />
-
 
     <TextView
                 android:id="@+id/phone_edit"
@@ -63,14 +97,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/phone_edit"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/edit_profile_text_back"
         android:hint="Enter new number"
         android:inputType="phone"
         android:minHeight="48dp"
         android:padding="6dp"
         android:textColor="@color/black" />
 
-            <TextView
+    <TextView
                 android:id="@+id/address_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,7 +124,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/address_edit"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/edit_profile_text_back"
         android:hint="Enter your address"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -101,11 +139,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_address"
         android:layout_centerInParent="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="61dp"
         android:background="@drawable/orange_button_background"
         android:fontFamily="serif"
-        android:text="Upload the new edit"
+        android:text="Save"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <ProgressBar
