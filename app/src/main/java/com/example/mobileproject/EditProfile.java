@@ -26,14 +26,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EditProfile extends AppCompatActivity {
 
-    private EditText nameEdit, emailEdit, mobileEdit, addressEdit, nameFedit, nameLedit;
+    private EditText nameEdit, mobileEdit, addressEdit;
     private ProgressBar progressBar;
-    private String name, email, phone, address;
+    private String name, phone, address;
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private Button edit;
@@ -45,7 +46,6 @@ public class EditProfile extends AppCompatActivity {
 
         progressBar = findViewById(R.id.prog);
         nameEdit = findViewById(R.id.editText_name);
-        emailEdit = findViewById(R.id.editText_email);
         mobileEdit = findViewById(R.id.editText_phone);
         addressEdit = findViewById(R.id.editText_address);
 
@@ -68,9 +68,6 @@ public class EditProfile extends AppCompatActivity {
 
     private void updateProfile(FirebaseUser firebaseUser){
 
-        String firstName = nameFedit.getText().toString();
-        String lastName = nameLedit.getText().toString();
-
         String phoneRegex = "[0][1][0,1,2,5][0-9]{8}";
         Matcher phoneMatcher;
         Pattern mobilePattern = Pattern.compile(phoneRegex);
@@ -78,18 +75,9 @@ public class EditProfile extends AppCompatActivity {
 
 
 
-        if (TextUtils.isEmpty(firstName)){
-            nameFedit.setError("First Name is required");
-            nameLedit.requestFocus();
-        } else if (TextUtils.isEmpty(lastName)){
-            nameFedit.setError("Last Name is required");
-            nameLedit.requestFocus();
-        } else if (TextUtils.isEmpty(email)){
-            emailEdit.setError("Email is required");
-            emailEdit.requestFocus();
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEdit.setError("Valid Email is required");
-            emailEdit.requestFocus();
+        if (TextUtils.isEmpty(name)){
+            nameEdit.setError("Name is required");
+            nameEdit.requestFocus();
         }  else if (TextUtils.isEmpty(phone)){
             mobileEdit.setError("Phone is required");
             mobileEdit.requestFocus();
@@ -101,23 +89,23 @@ public class EditProfile extends AppCompatActivity {
             mobileEdit.requestFocus();
         } else {
             name = nameEdit.getText().toString();
-            email = emailEdit.getText().toString();
             phone = mobileEdit.getText().toString();
             address = addressEdit.getText().toString();
 
-            ReadWriteUserDetails readWriteUserDetails = new ReadWriteUserDetails(name, email, phone, address," ");
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference(" Users ");
+            HashMap<String, Object> userInfo = new HashMap<>();
+            userInfo.put("phone",phone);
+            userInfo.put("address",address);
 
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
             String userID = firebaseUser.getUid();
-
             progressBar.setVisibility(View.VISIBLE);
 
-            reference.child(userID).setValue(readWriteUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+            reference.child(userID).updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(firstName + " " + lastName).build();
+                        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
                         firebaseUser.updateProfile(profileChangeRequest);
 
                         Toast.makeText(EditProfile.this, " Updated Successfully ", Toast.LENGTH_LONG).show();
@@ -155,12 +143,10 @@ public class EditProfile extends AppCompatActivity {
                 ReadWriteUserDetails readWriteUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
                 if( readWriteUserDetails != null){
                     name = firebaseUser.getDisplayName();
-                    email = firebaseUser.getEmail();
                     phone = readWriteUserDetails.phone;
                     address = readWriteUserDetails.address;
 
                     nameEdit.setText(name);
-                    emailEdit.setText(email);
                     mobileEdit.setText(phone);
                     addressEdit.setText(address);
                 } else {

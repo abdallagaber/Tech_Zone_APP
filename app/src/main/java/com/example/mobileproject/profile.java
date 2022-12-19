@@ -145,7 +145,7 @@ public class profile extends AppCompatActivity {
                     textEmail.setText(email);
                     textMobile.setText(phone);
                     textAddress.setText(address);
-                    Picasso.get().load(imageUri).resize(150,150).into(image);
+                    Picasso.get().load(imageUri).into(image);
                 }
             }
 
