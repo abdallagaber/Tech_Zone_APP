@@ -105,7 +105,7 @@ public class EditProfile extends AppCompatActivity {
             phone = mobileEdit.getText().toString();
             address = addressEdit.getText().toString();
 
-            ReadWriteUserDetails readWriteUserDetails = new ReadWriteUserDetails(name, email, phone, address);
+            ReadWriteUserDetails readWriteUserDetails = new ReadWriteUserDetails(name, email, phone, address," ");
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference(" Users ");
 

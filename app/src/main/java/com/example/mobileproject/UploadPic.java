@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.mobileproject.databinding.ActivityUploadPicBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -24,6 +26,8 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.util.HashMap;
 
 public class UploadPic extends AppCompatActivity {
 
@@ -59,10 +63,13 @@ public class UploadPic extends AppCompatActivity {
                         reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Image image = new Image();
-                                image.setImage(uri.toString());
+                                HashMap<String, Object>image = new HashMap<>();
+                                image.put("image",uri.toString());
 
-                                firebaseDatabase.getReference().child("data").push().setValue(image).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                FirebaseAuth auth = FirebaseAuth.getInstance();
+                                FirebaseUser firebaseUser = auth.getCurrentUser();
+
+                                firebaseDatabase.getReference("Users").child(firebaseUser.getUid()).updateChildren(image).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         Toast.makeText(UploadPic.this, " Upload Successfully", Toast.LENGTH_SHORT).show();

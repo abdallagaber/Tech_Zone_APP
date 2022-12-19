@@ -21,13 +21,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private FirebaseAuth auth;
     private Button btnsignout;
     private TextView textFullName, textEmail, textMobile, textAddress;
-    private String name, email, phone, address;
+    private String name, email, phone, address,imageUri;
     private ImageView image;
     public Button edit;
 
@@ -139,10 +140,12 @@ public class profile extends AppCompatActivity {
                     email = firebaseUser.getEmail();
                     phone = readWriteUserDetails.phone;
                     address = readWriteUserDetails.address;
+                    imageUri = readWriteUserDetails.image;
                     textFullName.setText(name);
                     textEmail.setText(email);
                     textMobile.setText(phone);
                     textAddress.setText(address);
+                    Picasso.get().load(imageUri).resize(150,150).into(image);
                 }
             }
 
