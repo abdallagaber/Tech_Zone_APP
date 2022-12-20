@@ -31,7 +31,7 @@ public class cart extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.LayoutManager layoutmanager;
     private Button checkout;
-    private TextView totalprice, total;
+    private TextView totalPrice;
     private DatabaseReference productRef;
     private int overTotalPrice = 0;
     BottomNavigationView bottomNavigationView;
@@ -40,13 +40,13 @@ public class cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        total  = findViewById(R.id.price);
         recyclerview = findViewById(R.id.cartLap);
         recyclerview.setHasFixedSize(true);
         layoutmanager = new LinearLayoutManager(this);
         recyclerview.setLayoutManager(layoutmanager);
 
         checkout = findViewById(R.id.checkout);
+        totalPrice = findViewById(R.id.totalPrice);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auth.getCurrentUser();
@@ -101,7 +101,7 @@ public class cart extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull product model) {
                 int price = ((Integer.valueOf(model.getPrice())));
                 overTotalPrice = overTotalPrice+price;
-                total.setText(String.valueOf(overTotalPrice));
+                totalPrice.setText(String.valueOf("Total price : "+overTotalPrice));
 //                holder.itemView.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {
@@ -119,7 +119,7 @@ public class cart extends AppCompatActivity {
                     public void onClick(View view) {
                         productRef.child(model.getId()).removeValue();
                         overTotalPrice = overTotalPrice-price;
-                        total.setText(String.valueOf("Total price : "+overTotalPrice));
+                        totalPrice.setText(String.valueOf("Total price : "+overTotalPrice));
                     }
                 });
 
