@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class cart extends AppCompatActivity {
     private TextView totalPrice, total;
     private DatabaseReference productRef;
     private int overTotalPrice = 0;
+    private Dialog orderDone;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,26 @@ public class cart extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auth.getCurrentUser();
         productRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Cart");
+
+        orderDone = new Dialog(this);
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button done;
+                orderDone.setContentView(R.layout.pop_up_checkout);
+                done = orderDone.findViewById(R.id.button_done);
+                done.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        orderDone.dismiss();
+                    }
+                });
+                total.setText("0 LE");
+                productRef.removeValue();
+                orderDone.show();
+
+            }
+        });
 
 
 
@@ -101,7 +123,7 @@ public class cart extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull product model) {
                 int price = ((Integer.valueOf(model.getPrice())));
                 overTotalPrice = overTotalPrice+price;
-                total.setText(String.valueOf(overTotalPrice));
+                total.setText(overTotalPrice+" LE");
 //                holder.itemView.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {
@@ -119,7 +141,7 @@ public class cart extends AppCompatActivity {
                     public void onClick(View view) {
                         productRef.child(model.getId()).removeValue();
                         overTotalPrice = overTotalPrice-price;
-                        total.setText(String.valueOf(overTotalPrice));
+                        total.setText(overTotalPrice+" LE");
                     }
                 });
 
