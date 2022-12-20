@@ -40,7 +40,7 @@ public class cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        total = findViewById(R.id.price);
+        total  = findViewById(R.id.price);
         recyclerview = findViewById(R.id.cartLap);
         recyclerview.setHasFixedSize(true);
         layoutmanager = new LinearLayoutManager(this);
