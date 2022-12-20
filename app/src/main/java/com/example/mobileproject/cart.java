@@ -102,14 +102,14 @@ public class cart extends AppCompatActivity {
                 int price = ((Integer.valueOf(model.getPrice())));
                 overTotalPrice = overTotalPrice+price;
                 totalPrice.setText(String.valueOf("Total price : "+overTotalPrice));
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(cart.this , productInfo.class);
-                        intent.putExtra("id" , model.getId());
-                        startActivity(intent);
-                    }
-                });
+//                holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        Intent intent = new Intent(cart.this , productInfo.class);
+//                        intent.putExtra("id" , model.getId());
+//                        startActivity(intent);
+//                    }
+//                });
 
                 holder.txtProductName.setText(model.getName());
                 holder.txtProductPrice.setText(model.getPrice()+" LE");

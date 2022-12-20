@@ -7,25 +7,12 @@
     android:background="@drawable/white_abstract_wallpaper_23_2148830026"
     tools:context=".categoryShow">
 
-    <SearchView
-        android:id="@+id/cat_searchView"
-        android:layout_width="273dp"
-        android:layout_height="41dp"
-        android:background="@drawable/searchview"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search here..."
-        app:layout_constraintBottom_toTopOf="@+id/lap_cat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.991"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.388" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="104dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="175dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tech_zone" />
