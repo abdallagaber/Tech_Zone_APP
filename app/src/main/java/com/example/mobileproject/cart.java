@@ -45,8 +45,18 @@ public class cart extends AppCompatActivity {
         layoutmanager = new LinearLayoutManager(this);
         recyclerview.setLayoutManager(layoutmanager);
 
-        checkout = findViewById(R.id.checkout);
+
         totalPrice = findViewById(R.id.totalPrice);
+        checkout = findViewById(R.id.checkout);
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(cart.this , CheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = auth.getCurrentUser();
