@@ -5,54 +5,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".cart"
-    android:background="@drawable/white_abstract_wallpaper_23_2148830026">
+    android:background="@drawable/edit_profile_text_back">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_marginTop="10dp"
-        android:layout_width="200dp"
-        android:layout_height="65dp"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/tech_zone" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartLap"
-        android:layout_below="@id/logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="156dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_height="590dp"
+        android:layout_marginBottom="156dp" />
 
     <RelativeLayout
+        android:id="@+id/relative1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
+        android:background="@drawable/white_background"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:layout_above="@id/bottomNavigationView">
 
+
         <TextView
-            android:id="@+id/totalPrice"
+            android:id="@+id/total_text"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Total Price"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="serif"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="15dp"
+            android:text="0 LE"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginRight="15dp"
+            android:textStyle="italic"
+            android:fontFamily="serif"/>
+
+        <View
+            android:id="@+id/view3"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:layout_centerHorizontal="false"
-            android:gravity="center"
-            android:text="Total Price : "
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="1dp"
+            android:background="#848487"
+            android:layout_below="@+id/total_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"/>
+
         <Button
             android:id="@+id/checkout"
-            android:layout_width="173dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/totalPrice"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/total_text"
             android:layout_centerHorizontal="true"
             android:background="@drawable/orange_button_background"
             android:text="Check Out"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
+
+
+
 
 
 
     </RelativeLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
