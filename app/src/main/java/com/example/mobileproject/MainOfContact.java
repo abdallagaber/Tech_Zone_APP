@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.slider.Slider;
 
-public class MainOfContact extends AppCompatActivity {
+public class MainOfContact extends AppCompatActivity implements View.OnClickListener{
 
+    Button start1 , stop1 ;
     BottomNavigationView bottomNavigationView;
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
@@ -26,6 +29,11 @@ public class MainOfContact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_of_contact);
+
+        start1 = (Button) findViewById(R.id.start);
+        stop1 = (Button) findViewById(R.id.stop);
+        start1.setOnClickListener(this);
+        stop1.setOnClickListener(this);
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPaper);
         mDotLayout= (LinearLayout) findViewById(R.id.dotsLayout);
@@ -87,5 +95,17 @@ public class MainOfContact extends AppCompatActivity {
             mDots [i].setTextColor (getResources ().getColor (R. color.colorTransparentWhite));
             mDotLayout.addView(mDots [i]);
     }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == start1){
+            startService(new Intent(this , MyService.class ));
+        }
+
+        else if(view == stop1){
+            stopService(new Intent(this , MyService.class ));
+
+        }
     }
 }
