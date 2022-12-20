@@ -70,7 +70,7 @@
             android:layout_height="45dp"
             android:layout_below="@id/total_text"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/orange_button_background"
+            android:background= "@drawable/orange_button_background"
             android:text="Check Out"
             android:textColor="@color/white"
             android:textSize="20dp"
