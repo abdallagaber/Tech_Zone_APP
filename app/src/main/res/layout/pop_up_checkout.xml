@@ -3,14 +3,16 @@
     android:layout_width="350dp"
     android:layout_height="320dp"
     android:layout_centerInParent="true"
+    android:background="@drawable/layout_bg"
     android:clipToOutline="true">
+
     <ImageView
         android:id="@+id/icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/thumbs_up"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:src="@drawable/thumbs_up" />
 
     <TextView
         android:id="@+id/textView"
@@ -32,17 +34,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:text="Thanks For Your Order"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
+
     <Button
         android:id="@+id/button_done"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/orange_button_background"
         android:text="Done"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 </RelativeLayout>

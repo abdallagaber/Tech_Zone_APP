@@ -55,6 +55,8 @@ public class cart extends AppCompatActivity {
         productRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Cart");
 
         orderDone = new Dialog(this);
+        orderDone.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        View view = getLayoutInflater().inflate(R.layout.pop_up_checkout,null);
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
