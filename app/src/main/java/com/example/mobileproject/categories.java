@@ -113,6 +113,6 @@ public class categories extends AppCompatActivity {
     public void onBackPressed(){
         Intent i = new Intent(this,HomeActivity.class);
         startActivity(i);
-        overridePendingTransition(R.anim.left_in,R.anim.right_out);
+        overridePendingTransition(R.anim.left_out,R.anim.right_in);
     }
 }
