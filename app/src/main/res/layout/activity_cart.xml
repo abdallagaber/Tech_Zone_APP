@@ -12,9 +12,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartLap"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="590dp"
-        android:layout_marginBottom="156dp" />
+        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/relative1" />
 
     <RelativeLayout
         android:id="@+id/relative1"
@@ -67,15 +67,15 @@
         <Button
             android:id="@+id/checkout"
             android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_below="@id/total_text"
             android:layout_centerHorizontal="true"
-            android:background= "@drawable/orange_button_background"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/orange_button_background"
             android:text="Check Out"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
+            android:textStyle="bold" />
 
 
 
