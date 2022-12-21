@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private DatabaseReference productRef;
-
+    private ProgressBar progressBar;
     private RecyclerView recyclerview;
     RecyclerView.LayoutManager layoutmanager;
     SearchView search;
@@ -59,6 +60,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        progressBar = findViewById(R.id.progressBar);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -153,7 +156,7 @@ public class HomeActivity extends AppCompatActivity {
                     holder.txtProductName.setText(model.getName());
                     holder.txtProductPrice.setText(model.getPrice()+" LE");
                     Picasso.get().load(model.getImage()).into(holder.productImage);
-
+                    progressBar.setVisibility(View.GONE);
 
                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -175,7 +178,6 @@ public class HomeActivity extends AppCompatActivity {
         };
         recyclerview.setAdapter(adapter);
         adapter.startListening();
-
 
     }
 
