@@ -3,7 +3,7 @@
 Tech Zone is an Android application that is similar to Amazon but specifically focuses on computers, laptops, PC components, and accessories. The app was developed by a team of college friends and utilizes Java and Firebase technology.
 
 ## Collaborators
-- [Abdalla Gaber (Team Leader)](https://github.com/abdallagaber): Created Java code and Firebase for the Registration Activity, Cart Activity, and Tech Zone Admin App.
+- [Abdalla Gaber (Team Leader)](https://github.com/abdallagaber): Created Java code and Firebase for the Registration Activity, Cart Activity, and [Tech Zone Admin App](https://github.com/abdallagaber/Tech_Zone_Admin).
 - [Ali Amr](https://github.com/AliAmr0): Created XML files for the Welcome, Login, Signup, Home, Product, and Categories Activities, and made Java code for the Bottom Navigation Bar.
 - [Khaled Nabawi](https://github.com/khalednabawey): Created Java code for the Home and Categories Activities.
 - [Rawan Shawky](https://github.com/rawanshawky): Created XML file and Java code for the Profile Activity.
